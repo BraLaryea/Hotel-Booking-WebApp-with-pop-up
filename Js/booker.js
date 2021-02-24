@@ -1,14 +1,15 @@
-// function mobileonly() {
-//     var x = window.innerWidth
-//     if (x > 400) {
-//         alert("Sorry this Website if for Mobile devices only")
-//         window.close()
-//     }
-// }
-
-// mobileonly()
-
 var suite = 0
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth() + 1;
+var yyyy = today.getFullYear();
+if (dd < 10) {
+    dd = '0' + dd
+}
+if (mm < 10) {
+    mm = '0' + mm
+}
+today = yyyy + '-' + mm + '-' + dd;
 
 function clearbtn() {
     let myElements = document.getElementsByClassName("bookbtn");
@@ -33,6 +34,8 @@ function showbtn() {
 function booking(x) {
     document.getElementById("reservation").style.display = "block";
     suite = x
+    document.getElementById("checkin").setAttribute("min", today);
+    document.getElementById("checkout").setAttribute("min", today);
     clearbtn()
 }
 
@@ -40,6 +43,10 @@ function closing() {
     document.getElementById("reservation").style.display = "none";
     document.getElementById("nights").value = ""
     document.getElementById("amount").value = ""
+    document.getElementById("name").value = ""
+    document.getElementById("tel").value = ""
+    document.getElementById("mail").value = ""
+
     showbtn()
 }
 
@@ -48,6 +55,9 @@ window.onclick = function (event) {
         document.getElementById("reservation").style.display = "none";
         document.getElementById("nights").value = ""
         document.getElementById("amount").value = ""
+        document.getElementById("name").value = ""
+        document.getElementById("tel").value = ""
+        document.getElementById("mail").value = ""
         showbtn()
     }
 }
